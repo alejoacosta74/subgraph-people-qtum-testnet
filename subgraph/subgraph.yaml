@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: PersonRegistry
+    network: mainnet
+    source:
+      address: "0xd7e3e9bA710b7356DD04b7bCA4B021e59fAeAD36"
+      abi: PersonRegistry
+      startBlock: 1085963
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Person
+      abis:
+        - name: PersonRegistry
+          file: ./abis/PersonRegistry.json
+      eventHandlers:
+        - event: NewPerson(uint256,address,string,string)
+          handler: handleNewPerson
+        - event: UpdatedPerson(uint256,address,string,string)
+          handler: handleUpdatedPerson
+      file: ./src/mapping.ts

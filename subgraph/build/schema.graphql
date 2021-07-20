@@ -1,0 +1,6 @@
+type Person @entity {
+  id: ID!
+  displayName: String!
+  imageUrl: String!
+  owner: Bytes! # address
+}
