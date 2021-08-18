@@ -1,8 +1,9 @@
 const Web3 = require('web3');
+const { JANUS , CONTRACT_ABI, CONTRACT_ADDRESS} = require("./constants");
 
 async function main(){
     try {
-        const web3 = new Web3('http://qtum:testpasswd@localhost:23889');
+        const web3 = new Web3(JANUS);
         let accounts = await web3.eth.getAccounts();
         for (let index = 0; index < accounts.length; index++) {
             let balance = await web3.eth.getBalance(accounts[index]);
